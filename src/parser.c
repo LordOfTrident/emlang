@@ -226,13 +226,11 @@ static parser_result_t parser_parse_plain(parser_t *p) {
 			parser_advance(p);
 
 		return parser_ok();
-	} else if (strcmp(p->tok, ":)") == 0) {
+	} else if (strcmp(p->tok, ":)") == 0)
 		em = em_new_with_data(EM_PRINT_END, data_new_int(DATA_STDOUT));
-		goto push;
-	} else if (strcmp(p->tok, ":(") == 0) {
+	else if (strcmp(p->tok, ":(") == 0)
 		em = em_new_with_data(EM_PRINT_END, data_new_int(DATA_STDERR));
-		goto push;
-	} else if (strcmp(p->tok, ":3")  == 0 || strcmp(p->tok, ";3") == 0 ||
+	else if (strcmp(p->tok, ":3")  == 0 || strcmp(p->tok, ";3") == 0 ||
 	           strcmp(p->tok, "<3")  == 0 || strcmp(p->tok, "x3") == 0 ||
 	           strcmp(p->tok, "><>") == 0) {
 		const char *text;
@@ -250,16 +248,13 @@ static parser_result_t parser_parse_plain(parser_t *p) {
 		assert(str != NULL);
 
 		em = em_new_with_data(EM_PUSH, data_new_str(str));
-		goto push;
-	} else if (is_int) {
+	} else if (is_int)
 		em = em_new_with_data(EM_PUSH, data_new_int((int64_t)atoll(p->tok)));
-		goto push;
-	} else {
+	else {
 		char *str = strcpy_to_heap(p->tok);
 		assert(str != NULL);
 
 		em = em_new_with_data(EM_PUSH, data_new_str(str));
-		goto push;
 	}
 
 push:
