@@ -231,8 +231,8 @@ static parser_result_t parser_parse_plain(parser_t *p) {
 	else if (strcmp(p->tok, ":(") == 0)
 		em = em_new_with_data(EM_PRINT_END, data_new_int(DATA_STDERR));
 	else if (strcmp(p->tok, ":3")  == 0 || strcmp(p->tok, ";3") == 0 ||
-	           strcmp(p->tok, "<3")  == 0 || strcmp(p->tok, "x3") == 0 ||
-	           strcmp(p->tok, "><>") == 0) {
+	         strcmp(p->tok, "<3")  == 0 || strcmp(p->tok, "x3") == 0 ||
+	         strcmp(p->tok, "><>") == 0) {
 		const char *text;
 		switch (p->tok[0]) {
 		case ':': text = "meow";        break;
